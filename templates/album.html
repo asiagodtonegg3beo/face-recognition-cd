@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav_bar.css')}}">
+<title>ironman album</title>
+</head>
+<style>
+body{
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+  background-color: lavender;
+}
+
+table{
+	border-radius:5px;
+	padding-bottom: 10px;
+	padding-top: 0px;
+	margin-top:20px;
+	width:70%;
+}
+
+th{
+  border-radius:10px;
+}
+
+td{
+  border:1px #000 solid;
+  background-color: white;
+}
+
+div{
+  padding-top: 80px;
+  padding-left:20px
+}
+
+
+@media screen and (max-width: 400px){
+	table{
+		width:100%;
+	}
+  div{
+    padding-top: 80px;
+    padding-left:10px;
+    padding-right: 10px;
+  }
+
+}
+
+.button {
+  border:0;
+  background-color:darkviolet;
+  color:#fff;
+  border-radius:20px;
+  cursor:pointer;
+  width:90px;
+  height:30px;
+}
+
+.button:hover{
+  color:black;
+  background-color: lavender;
+}
+
+.up {
+  border:none;
+  background-color: lavender;
+}
+
+
+</style>
+<body>
+	<nav>
+	<label class="logo">3B10 Face</label>
+		<ul class="computer" id="topnav">
+			<li><a>{{nick}}，您好</a></li>
+			<li><a href="../" class="active">首頁</a></li>
+  		<li><a href="../album">相簿</a></li>
+			<li><a href="../upload">上傳</a></li>
+			<li><a href="../logout">登出</a></li>
+			<li style="float:right"><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
+		</ul>
+	</nav>
+
+<div>
+  <form method="post">
+    <table align="center">
+      <tr><td class="up"><p>選擇你想看的相冊：</p>
+        <select id="folder" name=folder onchange="this.form.submit()">
+          {% for dir in dirs %}
+            <option value={{dirs.index(dir)}}>{{dir}}</option>
+          {% endfor %}
+        </select></td>
+
+        {% if edit %}
+        <td colspan="{{colspan-2}}" class="up" align="right"><input class="button" value='刪除' name='edit' type='submit'></td>
+        <td  class="up" align="right"><input class="button" value='觀賞模式' name='edit' type='submit'></td>
+        {% else %}
+        <td colspan="{{colspan-1}}" align="right" class="up"><input class="button" value='編輯模式' name='edit' type='submit'></td>
+        {% endif %}
+      </tr>
+        {% for folder in filefolder %}
+          <tr>
+            <th colspan="7" bgcolor="darkorchid">{{folder}}</th>
+          </tr>
+          {% if files[folder]['photo'] != [] %}
+          <tr>
+            <th colspan="7" bgcolor="blueviolet">photo</th>
+          </tr>
+          {% endif %}
+          {% for image in files[folder]['photo'] %}
+            {% if files[folder]['photo'].index(image) % colspan == 0 and files[folder]['photo'].index(image) != 0 %}
+              <tr>
+                <td align="center">
+                  {% if edit %}
+                    <input type="checkbox" value="{{folder}}-{{image}}#photo" name="delete_box"><br>
+                  {% endif %}
+                  <a href="../stream/{{folder}}/{{image}}">
+                  <img src="../static/uploads/{{username}}/{{folder}}/album/photo/{{image}}"></a>
+                </td>
+            {% else %}
+
+              <td align="center">
+                  {% if edit %}
+                    <input type="checkbox" value="{{folder}}-{{image}}#photo" name="delete_box"><br>
+                  {% endif %}
+                  <a href="../stream/{{folder}}/{{image}}">
+                  <img src="../static/uploads/{{username}}/{{folder}}/album/photo/{{image}}"></a>
+              </td>
+            {% endif %}
+          {% endfor %}
+          {% if files[folder]['video'] != [] %}
+          <tr>
+            <th colspan="7" bgcolor="blueviolet">video</th>
+          </tr>
+          {% endif %}
+
+          {% for vlog in files[folder]['video'] %}
+            {% if files[folder]['video'].index(vlog) % colspan == 0 and files[folder]['video'].index(vlog) != 0 %}
+              <tr>
+                <td align="center" >
+                  {% if edit %}
+                    <input type="checkbox" value="{{folder}}-{{vlog}}#video" name="delete_box"><br>
+                  {% endif %}
+                  <a href="../stream/{{folder}}/{{vlog}}">
+                  <img src="../static/uploads/{{username}}/{{folder}}/album/video/{{vlog[:-4]}}.jpg"></a>
+                </td>
+            {% else %}
+              <td align="center">
+              {% if edit %}
+                <input type="checkbox" value="{{folder}}-{{vlog}}#video" name="delete_box"><br>
+              {% endif %}
+              <a href="../stream/{{folder}}/{{vlog}}">
+              <img src="../static/uploads/{{username}}/{{folder}}/album/video/{{vlog[:-4]}}.jpg"></a>
+
+              </td>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+    </table>
+  </form>
+</div>
+
+</body>
+</html>

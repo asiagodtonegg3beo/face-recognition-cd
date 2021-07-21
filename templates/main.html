@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <p>
+        <meta charset="UTF-8">
+        <title>3B10 Face Recognition</title>
+        {% block content %}
+        <div class="container">
+            {% for message in get_flashed_messages(with_categories=True) %}
+            <div class="alert alert-{{message[0]}}">
+                {{ message [1]}}
+            </div>
+            {% endfor %}
+
+            {% block page_content %}{% endblock %}
+        </div>
+        {% endblock %}
+</head>
+<meta lang="zh-TW">
+<meta charset="utf-8">
+<style>
+    input[type="submit"] {
+        background: #3d85c6;
+        border-radius: 1000px;
+        width: 180px;
+        height: 50px;
+        color: #ffffff;
+        display: inline-block;
+        font: normal normal 24px/50px "Zenhei", sans-serif;
+        text-align: center;
+        text-shadow: 1px 1px #000000;
+    }
+
+    <meta lang="zh-TW"><meta charset="utf-8"><title>FDT#NIU</title><a rel="stylesheet"></a><style media="screen">body {
+        background-color: black;
+    }
+
+    h1 {
+        text-align: center;
+
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+</style>
+
+
+
+<font color="white" face="monospace">
+    <h1>人臉辨識NIU</h1>
+    <hr>
+</font>
+
+<nav class="float-nav-outer">
+    <ul class="float-nav">
+        <li><a href="teacher.php">老師登入</a></li>
+        <li><a href="student.php">學生登入</a></li>
+        <li><a href="modder.php">後台管理</a></li>
+        <li><a href="imformation.php">關於</a></li>
+    </ul>
+</nav>
+
+<br>
+<br>
+<style>
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+    body {
+        padding: 20px 0;
+    }
+
+    h1,
+    h2 {
+        margin: 0;
+        padding: 34px 0 14px 40px;
+    }
+
+    nav>ul {
+        background-color: rgb(242, 243, 246);
+        list-style: none;
+        /* 移除項目符號 */
+        margin: 0;
+        padding: 0;
+    }
+
+    nav a {
+        color: inherit;
+        /* 移除超連結顏色 */
+        display: block;
+        /* 讓 <a> 填滿 <li> */
+        font-size: 1.2rem;
+        padding: 10px;
+        text-decoration: none;
+        /* 移除超連結底線 */
+    }
+
+    /* 滑鼠移到 <a> 時變成深底淺色 */
+    nav li:hover {
+        background-color: rgb(122, 235, 183);
+        color: white;
+    }
+
+    .flex-nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    .inline-block-nav {
+        text-align: center;
+        font-size: 0;
+        /* 移除 <li> 之間的空隙 */
+    }
+
+    .inline-block-nav>li {
+        display: inline-block;
+    }
+
+    .float-nav-outer {
+        background-color: rgb(245, 246, 247);
+        overflow: hidden;
+    }
+
+    .float-nav {
+        position: relative;
+        left: 50%;
+        float: left;
+    }
+
+    .float-nav>li {
+        float: left;
+        position: relative;
+        right: 50%;
+    }
+
+</style>
+
+<font color="white" face="monospace">
+    <h1>人臉辨識點名系統</h1>
+</font>
+<title>FDT#NIU</title>
+<a rel="stylesheet"></a>
+<style media="screen">
+    body {
+        background-color: black;
+    }
+
+    h1 {
+        text-align: center;
+
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+</style>
+
+<body>
+    <meta charset="UTF-8">
+    <font color="white" face="monospace" size="5">
+        <form action="/b" method="post">
+            <div>
+                <input type="submit" name="encoding" value="encoding" onclick="return myFunction();">
+                進行特徵值編碼，生成人臉數據<p>
+            </div>
+
+            <div>
+                <input type="submit" name="training" value="training" onclick="return myFunction();">
+                將數據寫入模型<p>
+            </div>
+
+            <div>
+                <input type="submit" name="recognition" value="recognition" onclick="return myFunction();">
+                載入模型資料，開始實時辨識<p>
+                    <p>
+            </div>
+            <p>如何使用</p>
+            執行encoding，之後執行training，最後可執行recognition
+            <p><a href="http://120.101.8.94:7000/">串流網址</a>
+</body>
+
+</html>
+
+<script>
+    function myFunction() {
+        alert("正在處理中，等待網頁跳轉，請勿關閉網頁!\n按\"確定\"後繼續");
+        return true;
+    }
+
+</script>

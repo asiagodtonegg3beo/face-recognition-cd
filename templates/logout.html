@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav_bar.css')}}">
+<title>ironman album</title>
+</head>
+<style>
+body{
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.img img{
+	width: 500px;
+}
+
+.container{
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 500px 300px;
+	grid-gap: 7rem;
+
+}
+table{
+	background-color:plum;
+	border-radius:5px;
+	padding-bottom: 10px;
+	padding-top: 15px;
+	padding-right: 10px;
+	margin-top:20px;
+	width:70%;
+}
+
+input{
+	font-size: initial;
+}
+
+span {
+	background-color:#FFC8B4;
+	box-shadow:1px 1px 3px red;
+	margin-right:8px;
+}
+@media screen and (max-width: 1050px){
+	.login-content h2{
+	font-size: 2.4rem;
+	margin: 8px 0;
+	font-family: 'Noto Sans TC', sans-serif;
+	}
+}
+
+@media screen and (max-width: 1000px){
+
+	.login-content h2{
+  font-size: 2.4rem;
+  margin: 8px 0;
+	font-family: 'Noto Sans TC', sans-serif;
+	}
+
+	.img img{
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 770px){
+	.container{
+		grid-template-columns: 1fr;
+	}
+
+	.img{
+		display: none;
+	}
+
+	.login-content{
+		justify-content: center;
+		text-align: center;
+	}
+}
+
+
+.button {
+  border:0;
+  background-color:darkviolet;
+  color:#fff;
+  border-radius:20px;
+  cursor:pointer;
+  width:90px;
+  height:30px;
+}
+
+.button:hover{
+  color:black;
+  background-color: lavender;
+}
+</style>
+<body>
+<form method="post">
+	<nav>
+	<label class="logo">3B10 Face</label>
+		<ul class="computer" id="topnav">
+			<li><a>{{nick}}，您好</a></li>
+			<li><a href="../" class="active">首頁</a></li>
+  		<li><a href="../album">相簿</a></li>
+			<li><a href="../upload">上傳</a></li>
+			<li><a href="../logout">登出</a></li>
+			<li style="float:right"><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
+		</ul>
+	</nav>
+		<div class="container">
+			<div class="img">
+				<img class= "img" src="{{url_for('static',filename='img/logout.svg')}}">
+			</div>
+			<div class="login-content">
+				<form method="post">
+						<div style="padding-top: 100px;margin:10px">
+						  <h2>確認登出嗎？</h2>
+						  <p> </p>
+						  <p><input class="button" value="確定" type='submit' name="send">
+						  <input class="button" value="取消" type='submit' name="send"></p>
+						</div>
+				</form>
+			</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("topnav");
+  if (x.className === "computer") {
+    x.className = "phone";
+  } else {
+    x.className = "computer";
+  }
+}
+</script>
+
+
+</body>
+</html>

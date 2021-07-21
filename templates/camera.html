@@ -1,0 +1,56 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav_bar.css')}}">
+  <head>
+    <title>人臉辨識串流畫面</title>
+  </head>
+  <body>
+    <h1>人臉辨識及時串流畫面</h1>
+    <div>
+      <h1></h1>
+    </div>
+  <div class="flex-container">
+
+        <div class="frontdoor">
+              <h1>前門</h1>
+              <img class="img1" src="http://192.168.42.22:600/video_feed">
+        </div>
+
+        <div class="backdoor">
+              <h1>後門</h1>
+              <img class="img2" src="http://192.168.42.22:700/video_feed">
+        </div>
+
+  </div>
+
+  </body>
+</html>
+
+<style>
+body{
+  font-family:  微軟正黑體;
+}
+.flex-container {
+  display: flex;
+}
+
+.flex-container > *{
+width:50%;
+
+}
+.frontdoor{
+text-align: center;
+}
+
+.backdoor{
+text-align: center;
+}
+
+.img1{
+width: 600px;
+}
+</style>

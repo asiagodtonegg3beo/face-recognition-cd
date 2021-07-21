@@ -1,0 +1,12 @@
+1.安裝Anaconda 下載位置: https://repo.anaconda.com/archive/Anaconda3-2019.03-Windows-x86_64.exe
+               教學:https://medium.com/python4u/anaconda%E4%BB%8B%E7%B4%B9%E5%8F%8A%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-f7dae6454ab6
+
+2.開啟Anaconda Prompt
+
+3.創造一個環境: 在Anaconda Prompt內輸入 conda create --name face python=3.6
+
+4.激活環境 conda activate face
+
+5.移動目前位置到現在資料夾 cd C:\...\Desktop\人臉辨識
+
+6.輸入 pip install -r re

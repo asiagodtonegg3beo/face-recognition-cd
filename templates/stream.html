@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/nav_bar.css')}}">
+<title>ironman album</title>
+</head>
+<style>
+html{
+  height:100%;
+  }
+body{
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+  background-color: lavender;
+  height: 100%;
+  }
+
+table{
+  border:none;
+  width:70%;
+  height: 95%;
+  padding-top: 5%;
+}
+
+td{
+  text-align: center;
+}
+
+img,video{
+  max-width: 100%;
+  max-height:400px; 
+}
+video{
+  border:1px solid #aaa;
+}
+
+@media screen and (max-width: 400px)
+{
+  ul{
+    z-index: 100;
+  }
+  table{
+    border:none;
+    width:90%;
+    height: 100%;
+    padding-top: 10%;
+  }
+  img,video{
+    max-width: 100%;
+    max-height: 300px;
+  }
+  video{
+    border:1px solid #aaa;
+  }
+}
+
+
+
+.button {
+  border:0;
+  background-color:darkviolet;
+  color:#fff;
+  border-radius:20px;
+  cursor:pointer;
+  width:90px;
+  height:30px;
+}
+.present{
+}
+.button:hover{
+  color:black;
+  background-color: lavender;
+}
+
+.up {
+  border:none;
+  background-color: lavender;
+  height: 10%;
+  width:50%;
+}
+.left{
+  text-align: left;
+  padding-left: 10%;
+}
+.right{
+  text-align: right;
+  padding-right: 10%;
+}
+
+
+
+</style>
+<body>
+<ul class="computer" id="topnav">
+	<li><a href="../../../" class="active">首頁</a></li>
+  <li><a href="../../../album">相簿</a></li>
+	<li><a href="../../../upload">上傳</a></li>
+	<li><a href="../../../logout">登出</a></li>
+	<li style="float:right"><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
+</ul>
+
+<table align="center">
+  <form action="" enctype='multipart/form-data' method='POST'>    
+    <tr>
+      <td class="up" style="text-align: left;">
+          Folder:<select id="folder" name=folder onchange="this.form.submit()">
+              {% for dir in dirs %}
+                <option value={{dirs.index(dir)}}>{{dir}}</option>
+              {% endfor %}
+            </select>
+      </td>
+    </tr>
+    <tr>
+      {% if name == fileName[0] and name == fileName[-1] %}
+        <td class="up left"><input class='button' value='往前' name='next' type='submit' disabled></td>
+        <td class="up right"><input class='button' value='往後' name='next' type='submit' disabled></td>
+      {% elif name == fileName[0] %}
+        <td class="up left"><input class='button' value='往前' name='next' type='submit' disabled></td>
+        <td class="up right"><input class='button' value='往後' name='next' type='submit'></td>
+      {% elif name == fileName[-1] %}
+        <td class="up left"><input class='button' value='往前' name='next' type='submit'></td>
+        <td class="up right"><input class='button' value='往後' name='next' type='submit' disabled></td>
+      {% else %}
+        <td class="up left"><input class='button' value='往前' name='next' type='submit'></td>
+        <td class="up right"><input class='button' value='往後' name='next' type='submit'></td>
+      {% endif %}
+    </tr>
+  </form>
+  <tr>
+  <td colspan="2" class="present">
+    {% if name[-3::] == 'jpg' %}
+    <img src="../../static/uploads/{{username}}/{{folder}}/photo/{{name}}">
+    {% else %}
+    <video controls="controls">
+      <source src="../../static/uploads/{{username}}/{{folder}}/video/{{name}}" type="video/mp4">
+    </video>
+    {% endif %}
+  </td>
+  </tr>
+</table>
+	
+<script>
+function myFunction() {
+  var x = document.getElementById("topnav");
+  if (x.className === "computer") {
+    x.className = "phone";
+  } else {
+    x.className = "computer";
+  }
+}
+</script>
+
+
+</body>
+</html>
